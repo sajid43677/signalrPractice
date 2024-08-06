@@ -11,7 +11,8 @@ connection.on("ReceiveMessage", function (user, message) {
     // We can assign user-supplied strings to an element's textContent because it
     // is not interpreted as markup. If you're assigning in any other way, you 
     // should be aware of possible script injection concerns.
-     {li.textContent = message;}
+    if (user === 'System') { li.textContent = message; }
+    else { li.textContent = user + " says: " + message; }
     
 });
 

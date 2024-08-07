@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.SignalR;
 using signalr.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,7 +16,11 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
-
+/*app.MapPost("broadcast", async (string message,  IHubContext<ChatHub, IChatClient> context) =>
+{
+    await context.Clients.All.ReceiveMessage(message);
+    return Results.Ok();
+});*/
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
